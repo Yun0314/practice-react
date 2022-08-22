@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5", // 指定編譯生成的JS版本
+    "lib": ["dom", "dom.iterable", "esnext"], // 編譯需要引入的特定函式庫檔案
+    "allowJs": true, // 允許編譯 javascript 文件
+    "skipLibCheck": true, // 不會檢查引入的函式庫檔案
+    "esModuleInterop": true, // 兼容模組導入的方式
+    "allowSyntheticDefaultImports": true, // 允許從沒有設置默認導出的模組中默認導入
+    "strict": true, // 啟用所有嚴格類型檢查選項
+    "forceConsistentCasingInFileNames": true, // 確保檔案的大小寫一致
+    "noFallthroughCasesInSwitch": true, // 報告 switch 語句的 fallthrough 錯誤。 （即，不允許 switch 的 case 語句貫穿）
+    "module": "esnext", // 指定生成哪種模組
+    "moduleResolution": "node", // 選擇模組解析策略： 'node' (Node.js) or 'classic' (TypeScript pre-1.6)
+    "resolveJsonModule": true,
+    "isolatedModules": true, // 將每個文件做為單獨的module（與 'ts.transpileModule' 類似）
+    "noEmit": true, // 不產生輸出檔案
+    "jsx": "react-jsx" // 指定 jsx 代碼的生成
+  },
+  "include": ["src"] // 指定編譯需要編譯的文件或目錄
+}
