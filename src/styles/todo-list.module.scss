@@ -1,0 +1,33 @@
+@import 'variables';
+
+.todoForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todoUl {
+  padding: 0 20px;
+}
+
+.todoLi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  max-width: 600px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid $white;
+
+  &[data-active='true'] {
+    text-decoration: line-through;
+    color: #888;
+    background-color: $white;
+  }
+
+  .todoCheckedBlock {
+    display: flex;
+    align-items: center;
+  }
+}

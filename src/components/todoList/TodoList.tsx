@@ -4,7 +4,7 @@ import TodoTab from './TodoTab';
 import TodoForm from './TodoForm';
 import TodoItem from './TodoItem';
 import { TodoType } from '../../types/todoList';
-import { TodoUl } from '../../styles/styleTodoList';
+import style from '../../styles/todo-list.module.scss';
 
 const TodoList: React.FC = () => {
   const [list, setList] = useState<TodoType[]>([]);
@@ -83,7 +83,7 @@ const TodoList: React.FC = () => {
     <>
       <TodoTab tabType={tabType} onChangeTab={setTabType} />
       <TodoForm onAddItem={atAddItem} />
-      <TodoUl>
+      <ul className={style.todoUl}>
         {noData ? (
           tabTodoList.map((item) => (
             <TodoItem
@@ -98,7 +98,7 @@ const TodoList: React.FC = () => {
         ) : (
           <div>無資料</div>
         )}
-      </TodoUl>
+      </ul>
     </>
   );
 };

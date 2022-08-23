@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Checkbox from '@mui/material/Checkbox';
 import { styled } from '@mui/material/styles';
-import emotionStyled from '@emotion/styled';
 
 const white = '#fff';
 const green = '#74a674';
@@ -85,42 +84,4 @@ const TodoCheckbox = styled(Checkbox)({
   },
 });
 
-const TodoSendForm = emotionStyled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TodoUl = emotionStyled.ul`
-  padding: 0 20px;
-`;
-
-const TodoLi = emotionStyled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: auto;
-  max-width: 600px;
-  font-size: 16px;
-  cursor: pointer;
-  border: 1px solid ${white};
-  &.done {
-    text-decoration: line-through;
-    color: #888;
-    background-color: ${white};
-  };
-  .todo-checked-block {
-    display: flex;
-    align-items: center;
-  };
-`;
-
-export {
-  TodoTextField,
-  TodoButton,
-  TodoToggleButtonGroup,
-  TodoCheckbox,
-  TodoSendForm,
-  TodoUl,
-  TodoLi,
-};
+export { TodoTextField, TodoButton, TodoToggleButtonGroup, TodoCheckbox };

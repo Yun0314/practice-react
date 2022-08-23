@@ -1,9 +1,9 @@
 import React, { memo, MouseEvent } from 'react';
-import classnames from 'classnames';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { TodoItemProps } from '../../types/todoList';
-import { TodoCheckbox, TodoLi } from '../../styles/styleTodoList';
+import { TodoCheckbox } from '../../styles/styleTodoList';
+import style from '../../styles/todo-list.module.scss';
 
 const TodoItem: React.FC<TodoItemProps> = (props) => {
   const { id, content, checked, onCheckItem, onDeleteItem } = props;
@@ -17,11 +17,12 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
   };
 
   return (
-    <TodoLi
-      className={classnames({ done: checked })}
+    <li
+      className={style.todoLi}
+      data-active={checked}
       onClick={() => onCheckItem({ id, content, checked })}
     >
-      <div className="todo-checked-block">
+      <div className="todoCheckedBlock">
         <TodoCheckbox checked={checked} onChange={() => ''} />
         {content}
       </div>
@@ -32,7 +33,7 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
       >
         <DeleteIcon />
       </IconButton>
-    </TodoLi>
+    </li>
   );
 };
 export default memo(TodoItem);

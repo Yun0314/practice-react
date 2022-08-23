@@ -1,15 +1,15 @@
 import React from 'react';
 import TodoList from '../components/todoList/TodoList';
-import { AppDiv, AppHeader } from '../styles/styleApp';
+import style from '../styles/app.module.scss';
 
 function App() {
   return (
-    <AppDiv>
-      <AppHeader>
+    <div className={style.appDiv}>
+      <header className={style.appHeader}>
         <h2>React Practice</h2>
         <TodoList />
-      </AppHeader>
-    </AppDiv>
+      </header>
+    </div>
   );
 }
 
