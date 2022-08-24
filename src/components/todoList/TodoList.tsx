@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import TodoDataService from '../../apis/todoService';
-import TodoTab from './TodoTab';
-import TodoForm from './TodoForm';
-import TodoItem from './TodoItem';
-import { TodoType } from '../../types/todoList';
-import style from '../../styles/todo-list.module.scss';
+import TodoDataService from '@/apis/todoService';
+import TodoTab from '@todoList/TodoTab';
+import TodoForm from '@todoList/TodoForm';
+import TodoItem from '@todoList/TodoItem';
+import { TodoType } from '@/types/todoList';
+import style from '@/styles/todo-list.module.scss';
 
 const TodoList: React.FC = () => {
   const [list, setList] = useState<TodoType[]>([]);

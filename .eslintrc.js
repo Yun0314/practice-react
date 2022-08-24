@@ -19,7 +19,6 @@ module.exports = {
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
   rules: {
-    // 重新配置 react-hooks
-    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/rules-of-hooks': 'error', // 重新配置 react-hooks
   },
 };

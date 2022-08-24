@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
-import { TodoTabProps, TabListType } from '../../types/todoList';
-import { TodoToggleButtonGroup } from '../../styles/styleTodoList';
+import { TodoTabProps, TabListType } from '@/types/todoList';
+import { TodoToggleButtonGroup } from '@/styles/styleTodoList';
 
 const tabList: TabListType[] = [
   { title: '全部', type: 'all' },

@@ -2,9 +2,9 @@ import React, { useState, memo, FormEvent } from 'react';
 import InputAdornment from '@mui/material/InputAdornment';
 import SendIcon from '@mui/icons-material/Send';
 import ListAltIcon from '@mui/icons-material/ListAlt';
-import { TodoFormProps } from '../../types/todoList';
-import { TodoTextField, TodoButton } from '../../styles/styleTodoList';
-import style from '../../styles/todo-list.module.scss';
+import { TodoFormProps } from '@/types/todoList';
+import { TodoTextField, TodoButton } from '@/styles/styleTodoList';
+import style from '@/styles/todo-list.module.scss';
 
 const TodoForm: React.FC<TodoFormProps> = (props) => {
   const { onAddItem } = props;

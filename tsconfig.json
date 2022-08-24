@@ -14,7 +14,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true, // 將每個文件做為單獨的module（與 'ts.transpileModule' 類似）
     "noEmit": true, // 不產生輸出檔案
-    "jsx": "react-jsx" // 指定 jsx 代碼的生成
+    "jsx": "react-jsx", // 指定 jsx 代碼的生成
+    "baseUrl": "./",
+    "paths": {
+      // 設定絕對路徑，讓 vscode 辨識，需先設 baseUrl
+      "@/*": ["src/*"],
+      "@todoList/*": ["src/components/todoList/*"]
+    }
   },
   "include": ["src"] // 指定編譯需要編譯的文件或目錄
 }
