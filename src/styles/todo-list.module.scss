@@ -10,15 +10,19 @@
   padding: 0 20px;
 }
 
+.todoLi,
+.todoNoData {
+  margin: auto;
+  max-width: 600px;
+  cursor: pointer;
+  border: 1px solid $white;
+}
+
 .todoLi {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: auto;
-  max-width: 600px;
   font-size: 16px;
-  cursor: pointer;
-  border: 1px solid $white;
 
   &[data-active='true'] {
     text-decoration: line-through;

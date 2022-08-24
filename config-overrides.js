@@ -1,6 +1,6 @@
 // 覆蓋 webpack 設定 (不用 eject)
 // (1) npm install react-app-rewired -D
-// (1.5) 有需要可以再 npm install customize-cra  -D (自訂義 react-app-rewired 核心功能的套件)
+// (1.5) 有需要可以再 npm install customize-cra -D (自訂義 react-app-rewired 核心功能的套件)
 // (2) 調整 package.json ➜ scripts ➜ start、build、test 的 react-scripts 都改成 react-app-rewired
 // (3) 新增 config-overrides.js + 寫覆蓋設定
 

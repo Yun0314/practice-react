@@ -41,12 +41,7 @@ const TodoForm: React.FC<TodoFormProps> = (props) => {
           variant="outlined"
           required
         />
-        <TodoButton
-          variant="contained"
-          color="primary"
-          type="submit"
-          endIcon={<SendIcon />}
-        >
+        <TodoButton variant="contained" color="primary" type="submit" endIcon={<SendIcon />}>
           送出
         </TodoButton>
       </form>

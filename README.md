@@ -6,11 +6,11 @@
 
 - Create React App + TypeScript
 - UI 框架使用 Material UI、Material ICON
-- 使用 emotion(CSS-in-JS)
-- 用 JSON Server 模擬 RESTful API(線本地端使用)，搭配 axios 進行呼叫。
+- 使用 emotion (CSS-in-JS)
+- 用 JSON Server 模擬 RESTful API (線本地端使用)，搭配 axios 進行呼叫。
   - 操作說明:
   - 執行 json-server --watch db.json
-  - 執行 react-scripts start
+  - 執行 react-app-rewired start
 
 ## Available Scripts
 

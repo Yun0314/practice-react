@@ -26,11 +26,7 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
         <TodoCheckbox checked={checked} onChange={() => ''} />
         {content}
       </div>
-      <IconButton
-        aria-label="delete"
-        color="error"
-        onClick={(e) => atDeleteClick(e)}
-      >
+      <IconButton aria-label="delete" color="error" onClick={(e) => atDeleteClick(e)}>
         <DeleteIcon />
       </IconButton>
     </li>

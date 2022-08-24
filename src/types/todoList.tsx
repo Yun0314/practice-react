@@ -22,3 +22,12 @@ export type TabListType = {
   title: string;
   type: string;
 };
+
+export type TodoStateType = { data: TodoType[]; tab: string };
+
+export type TodoActionType =
+  | { type: 'SET_TODO'; payload: TodoType[] }
+  | { type: 'ADD_TODO'; payload: TodoType }
+  | { type: 'UPDATE_TODO'; payload: TodoType }
+  | { type: 'DELETE_TODO'; payload: number }
+  | { type: 'CHANGE_TAB'; payload: string };
