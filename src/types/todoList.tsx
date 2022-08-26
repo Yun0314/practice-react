@@ -30,4 +30,4 @@ export type TodoActionType =
   | { type: 'ADD_TODO'; payload: TodoType }
   | { type: 'UPDATE_TODO'; payload: TodoType }
   | { type: 'DELETE_TODO'; payload: number }
-  | { type: 'CHANGE_TAB'; payload: string };
+  | { type: 'CHANGE_TODO_TAB'; payload: string };

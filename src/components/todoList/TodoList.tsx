@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import TodoDataService from '@/apis/todoService';
+import { setTodo, addTodo, updateTodo, deleteTodo, changeTodoTab } from '@/actions/todoAction';
 import useTodoReducer from '@/reducers/todo';
 import TodoTab from '@todoList/TodoTab';
 import TodoForm from '@todoList/TodoForm';
@@ -14,7 +15,7 @@ const TodoList: React.FC = () => {
   useEffect(() => {
     TodoDataService.getAll()
       .then((res) => {
-        dispatch({ type: 'SET_TODO', payload: res.data });
+        dispatch(setTodo(res.data));
       })
       .catch((err: Error) => {
         console.log(err);
@@ -28,7 +29,7 @@ const TodoList: React.FC = () => {
       const newItem = { ...item, checked: !item.checked };
       TodoDataService.update(newItem)
         .then((res) => {
-          dispatch({ type: 'UPDATE_TODO', payload: res.data });
+          dispatch(updateTodo(res.data));
         })
         .catch((err: Error) => {
           console.log(err);
@@ -48,8 +49,8 @@ const TodoList: React.FC = () => {
 
       TodoDataService.create(newItem)
         .then((res) => {
-          dispatch({ type: 'ADD_TODO', payload: res.data });
-          dispatch({ type: 'CHANGE_TAB', payload: 'all' });
+          dispatch(addTodo(res.data));
+          dispatch(changeTodoTab('all'));
         })
         .catch((err: Error) => {
           console.log(err);
@@ -63,7 +64,7 @@ const TodoList: React.FC = () => {
     (id: number) => {
       TodoDataService.delete(id)
         .then(() => {
-          dispatch({ type: 'DELETE_TODO', payload: id });
+          dispatch(deleteTodo(id));
         })
         .catch((err: Error) => {
           console.log(err);
@@ -74,7 +75,7 @@ const TodoList: React.FC = () => {
 
   const atChangeTab = useCallback(
     (tab: string) => {
-      dispatch({ type: 'CHANGE_TAB', payload: tab });
+      dispatch(changeTodoTab(tab));
     },
     [dispatch],
   );
@@ -97,9 +98,7 @@ const TodoList: React.FC = () => {
           tabTodoList.map((item) => (
             <TodoItem
               key={item.id}
-              id={item.id}
-              content={item.content}
-              checked={item.checked}
+              {...item}
               onCheckItem={atCheckItem}
               onDeleteItem={atDeleteItem}
             />

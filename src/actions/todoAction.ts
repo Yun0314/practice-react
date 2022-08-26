@@ -1,30 +1,44 @@
+// import TodoDataService from '@/apis/todoService';
 import { TodoType, TodoActionType } from '@/types/todoList';
 
-function setTodo(item: TodoType[]) {
+export const SET_TODO = 'SET_TODO';
+export const ADD_TODO = 'ADD_TODO';
+export const UPDATE_TODO = 'UPDATE_TODO';
+export const DELETE_TODO = 'DELETE_TODO';
+export const CHANGE_TODO_TAB = 'CHANGE_TODO_TAB';
+
+export function setTodo(item: TodoType[]): TodoActionType {
   return {
-    type: 'SET_TODO',
+    type: SET_TODO,
     payload: item,
   };
 }
 
-function addTodo(item: TodoType) {
+export function addTodo(item: TodoType): TodoActionType {
   return {
-    type: 'ADD_TODO',
+    type: ADD_TODO,
     payload: item,
   };
 }
 
-function updateTodo(item: TodoType) {
+export function updateTodo(item: TodoType): TodoActionType {
   return {
-    type: 'UPDATE_TODO',
+    type: UPDATE_TODO,
     payload: item,
   };
 }
 
-function deleteTodo(id: number) {
+export function deleteTodo(id: number): TodoActionType {
   return {
-    type: 'DELETE_TODO',
+    type: DELETE_TODO,
     payload: id,
+  };
+}
+
+export function changeTodoTab(type: string): TodoActionType {
+  return {
+    type: CHANGE_TODO_TAB,
+    payload: type,
   };
 }
 
@@ -33,4 +47,5 @@ function deleteTodo(id: number) {
 //     addTodo: (item: TodoType) => dispatch(addTodo(item)),
 //     updateTodo: (item: TodoType) => dispatch(updateTodo(item)),
 //     deleteTodo: (id: number) => dispatch(deleteTodo(id)),
+//     changeTodoTab: (type: string) => dispatch(changeTodoTab(type)),
 //   });

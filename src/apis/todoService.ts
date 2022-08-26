@@ -1,5 +1,5 @@
 import axios from './axios';
-import { TodoType } from '@/types/todoList';
+import { TodoType } from '../types/todoList';
 
 type TodoCreateType = {
   content: string;

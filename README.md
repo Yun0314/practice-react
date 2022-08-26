@@ -1,4 +1,4 @@
-# React 實作小練習
+# React 小練習
 
 1. todoList (CRUD)
 2. 準備中
