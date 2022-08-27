@@ -18,7 +18,7 @@ module.exports = function override(config) {
   config.resolve.alias = {
     ...config.resolve.alias,
     '@': resolve('src'),
-    '@todoList': resolve('src/components/todoList'),
+    '@todoList': resolve('src/components/todoList')
   };
   return config;
 };

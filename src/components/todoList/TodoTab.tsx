@@ -6,7 +6,7 @@ import { TodoToggleButtonGroup } from '@/styles/styleTodoList';
 const tabList: TabListType[] = [
   { title: '全部', type: 'all' },
   { title: '進行中', type: 'active' },
-  { title: '完成', type: 'completed' },
+  { title: '完成', type: 'completed' }
 ];
 
 const TodoTab: React.FC<TodoTabProps> = (props) => {

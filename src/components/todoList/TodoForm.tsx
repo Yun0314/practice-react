@@ -36,7 +36,7 @@ const TodoForm: React.FC<TodoFormProps> = (props) => {
               <InputAdornment position="start">
                 <ListAltIcon />
               </InputAdornment>
-            ),
+            )
           }}
           variant="outlined"
           required

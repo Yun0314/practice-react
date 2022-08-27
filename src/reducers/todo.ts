@@ -4,13 +4,13 @@ import {
   ADD_TODO,
   UPDATE_TODO,
   DELETE_TODO,
-  CHANGE_TODO_TAB,
+  CHANGE_TODO_TAB
 } from '@/actions/todoAction';
 import { TodoType, TodoStateType, TodoActionType } from '@/types/todoList';
 
 const initialState = {
   data: [],
-  tab: 'all',
+  tab: 'all'
 };
 
 const reducer = (state: TodoStateType, action: TodoActionType): TodoStateType => {
@@ -19,13 +19,13 @@ const reducer = (state: TodoStateType, action: TodoActionType): TodoStateType =>
     case SET_TODO:
       return {
         ...state,
-        data: payload,
+        data: payload
       };
 
     case ADD_TODO:
       return {
         ...state,
-        data: state.data.concat(payload),
+        data: state.data.concat(payload)
       };
 
     case UPDATE_TODO:
@@ -36,19 +36,19 @@ const reducer = (state: TodoStateType, action: TodoActionType): TodoStateType =>
 
       return {
         ...state,
-        data: newList,
+        data: newList
       };
 
     case DELETE_TODO:
       return {
         ...state,
-        data: state.data.filter((item) => item.id !== payload),
+        data: state.data.filter((item) => item.id !== payload)
       };
 
     case CHANGE_TODO_TAB:
       return {
         ...state,
-        tab: payload,
+        tab: payload
       };
 
     default:

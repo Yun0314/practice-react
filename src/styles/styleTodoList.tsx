@@ -12,23 +12,23 @@ const TodoTextField = styled(TextField)({
   '& .MuiInputBase-input': {
     borderRadius: 8,
     fontSize: 16,
-    padding: '8px 12px',
+    padding: '8px 12px'
   },
   '& .MuiOutlinedInput-root': {
     backgroundColor: `${white}`,
     '& fieldset': {
-      borderColor: `${white}`,
+      borderColor: `${white}`
     },
     '&:hover fieldset': {
-      borderColor: `${lightGreen}`,
+      borderColor: `${lightGreen}`
     },
     '&.Mui-focused fieldset': {
-      borderColor: `${lightGreen}`,
-    },
+      borderColor: `${lightGreen}`
+    }
   },
   '& .MuiSvgIcon-root': {
-    color: '#e6e6e6',
-  },
+    color: '#e6e6e6'
+  }
 });
 
 const TodoButton = styled(Button)({
@@ -42,13 +42,13 @@ const TodoButton = styled(Button)({
   '&:hover': {
     backgroundColor: `${lightGreen}`,
     borderColor: `${green}`,
-    boxShadow: 'none',
+    boxShadow: 'none'
   },
   '&:active': {
     backgroundColor: `${green}`,
     borderColor: `${white}`,
-    boxShadow: 'none',
-  },
+    boxShadow: 'none'
+  }
 });
 
 const TodoToggleButtonGroup = styled(ToggleButtonGroup)({
@@ -66,22 +66,22 @@ const TodoToggleButtonGroup = styled(ToggleButtonGroup)({
       '&:hover': {
         color: `${white}`,
         backgroundColor: `${lightGreen}`,
-        borderColor: `${white}`,
-      },
+        borderColor: `${white}`
+      }
     },
     '&:hover': {
       color: `${white}`,
       backgroundColor: `${lightGreen}`,
-      borderColor: `${white}`,
-    },
-  },
+      borderColor: `${white}`
+    }
+  }
 });
 
 const TodoCheckbox = styled(Checkbox)({
   color: `${white}`,
   '&.Mui-checked': {
-    color: `${lightGreen}`,
-  },
+    color: `${lightGreen}`
+  }
 });
 
 export { TodoTextField, TodoButton, TodoToggleButtonGroup, TodoCheckbox };

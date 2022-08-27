@@ -1,4 +1,3 @@
-// import TodoDataService from '@/apis/todoService';
 import { TodoType, TodoActionType } from '@/types/todoList';
 
 export const SET_TODO = 'SET_TODO';
@@ -10,35 +9,35 @@ export const CHANGE_TODO_TAB = 'CHANGE_TODO_TAB';
 export function setTodo(item: TodoType[]): TodoActionType {
   return {
     type: SET_TODO,
-    payload: item,
+    payload: item
   };
 }
 
 export function addTodo(item: TodoType): TodoActionType {
   return {
     type: ADD_TODO,
-    payload: item,
+    payload: item
   };
 }
 
 export function updateTodo(item: TodoType): TodoActionType {
   return {
     type: UPDATE_TODO,
-    payload: item,
+    payload: item
   };
 }
 
 export function deleteTodo(id: number): TodoActionType {
   return {
     type: DELETE_TODO,
-    payload: id,
+    payload: id
   };
 }
 
 export function changeTodoTab(type: string): TodoActionType {
   return {
     type: CHANGE_TODO_TAB,
-    payload: type,
+    payload: type
   };
 }
 

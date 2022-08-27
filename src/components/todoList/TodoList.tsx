@@ -1,7 +1,9 @@
 import React, { useEffect, useCallback } from 'react';
-import TodoDataService from '@/apis/todoService';
+import TodoServiceConfig from '@/apis/todoService';
+import useAxios from '@/hooks/useAxios';
 import { setTodo, addTodo, updateTodo, deleteTodo, changeTodoTab } from '@/actions/todoAction';
 import useTodoReducer from '@/reducers/todo';
+import Loading from '@/components/common/Loading';
 import TodoTab from '@todoList/TodoTab';
 import TodoForm from '@todoList/TodoForm';
 import TodoItem from '@todoList/TodoItem';
@@ -10,74 +12,56 @@ import style from '@/styles/todo-list.module.scss';
 
 const TodoList: React.FC = () => {
   const [state, dispatch] = useTodoReducer();
+  const { isLoading, sendRequest } = useAxios();
 
   // 第一次頁面載入呼叫api撈 list
   useEffect(() => {
-    TodoDataService.getAll()
-      .then((res) => {
-        dispatch(setTodo(res.data));
-      })
-      .catch((err: Error) => {
-        console.log(err);
-      });
-  }, [dispatch]);
+    sendRequest(TodoServiceConfig.getAll(), (res: TodoType[]) => {
+      dispatch(setTodo(res));
+    });
+  }, [sendRequest, dispatch]);
 
   // 使用 useCallback 避免重新渲染時 function 跟著重創一個實體而連帶子層跟著 reRender
   // 切換 item 狀態
   const atCheckItem = useCallback(
     (item: TodoType) => {
       const newItem = { ...item, checked: !item.checked };
-      TodoDataService.update(newItem)
-        .then((res) => {
-          dispatch(updateTodo(res.data));
-        })
-        .catch((err: Error) => {
-          console.log(err);
-        });
+
+      sendRequest(TodoServiceConfig.update(newItem), (res: TodoType) => {
+        dispatch(updateTodo(res));
+      });
     },
-    [dispatch],
+    [sendRequest, dispatch]
   );
 
   // 新增 item
   const atAddItem = useCallback(
     (content: string) => {
-      // api 打過去後會自動幫加上 id
-      const newItem = {
-        content,
-        checked: false,
-      };
+      const newItem = { content, checked: false };
 
-      TodoDataService.create(newItem)
-        .then((res) => {
-          dispatch(addTodo(res.data));
-          dispatch(changeTodoTab('all'));
-        })
-        .catch((err: Error) => {
-          console.log(err);
-        });
+      sendRequest(TodoServiceConfig.create(newItem), (res: TodoType) => {
+        dispatch(addTodo(res));
+        dispatch(changeTodoTab('all'));
+      });
     },
-    [dispatch],
+    [sendRequest, dispatch]
   );
 
   // 移除 item
   const atDeleteItem = useCallback(
     (id: number) => {
-      TodoDataService.delete(id)
-        .then(() => {
-          dispatch(deleteTodo(id));
-        })
-        .catch((err: Error) => {
-          console.log(err);
-        });
+      sendRequest(TodoServiceConfig.delete(id), () => {
+        dispatch(deleteTodo(id));
+      });
     },
-    [dispatch],
+    [sendRequest, dispatch]
   );
 
   const atChangeTab = useCallback(
     (tab: string) => {
       dispatch(changeTodoTab(tab));
     },
-    [dispatch],
+    [dispatch]
   );
 
   // 根據 tab 篩選 list
@@ -87,14 +71,18 @@ const TodoList: React.FC = () => {
     return true;
   });
 
-  const noData: boolean = tabTodoList?.length ? true : false;
+  const noData: boolean = isLoading ? true : tabTodoList?.length ? false : true;
+  const noDataText = isLoading ? '讀取中...' : '無資料';
 
   return (
     <>
+      <Loading isLoading={isLoading} />
       <TodoTab tabType={state.tab} onChangeTab={atChangeTab} />
       <TodoForm onAddItem={atAddItem} />
       <ul className={style.todoUl}>
         {noData ? (
+          <div className={style.todoNoData}>{noDataText}</div>
+        ) : (
           tabTodoList.map((item) => (
             <TodoItem
               key={item.id}
@@ -103,8 +91,6 @@ const TodoList: React.FC = () => {
               onDeleteItem={atDeleteItem}
             />
           ))
-        ) : (
-          <div className={style.todoNoData}>無資料</div>
         )}
       </ul>
     </>

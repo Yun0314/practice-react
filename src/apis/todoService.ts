@@ -1,27 +1,33 @@
-import axios from './axios';
-import { TodoType } from '../types/todoList';
+import { TodoType } from '@/types/todoList';
 
+// api 打過去後會自動幫加上 id
 type TodoCreateType = {
   content: string;
   checked: boolean;
 };
 
-class TodoDataService {
-  getAll() {
-    return axios.get('/todoList');
-  }
+class TodoServiceConfig {
+  getAll = () => ({
+    url: '/todoList',
+    method: 'GET'
+  });
 
-  create(data: TodoCreateType) {
-    return axios.post('/todoList', data);
-  }
+  create = (data: TodoCreateType) => ({
+    url: '/todoList',
+    method: 'POST',
+    data
+  });
 
-  update(data: TodoType) {
-    return axios.put(`/todoList/${data.id}`, data);
-  }
+  update = (data: TodoType) => ({
+    url: `/todoList/${data.id}`,
+    method: 'PUT',
+    data
+  });
 
-  delete(id: number) {
-    return axios.delete(`/todoList/${id}`);
-  }
+  delete = (id: number) => ({
+    url: `/todoList/${id}`,
+    method: 'DELETE'
+  });
 }
 
-export default new TodoDataService();
+export default new TodoServiceConfig();
