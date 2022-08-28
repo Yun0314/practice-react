@@ -3,7 +3,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SendIcon from '@mui/icons-material/Send';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { TodoFormProps } from '@/types/todoList';
-import { TodoTextField, TodoButton } from '@/styles/styleTodoList';
+import { TodoTextField, TodoButton } from '@/styles/mui/muiTodoList';
 import style from '@/styles/todo-list.module.scss';
 
 const TodoForm: React.FC<TodoFormProps> = (props) => {
@@ -28,7 +28,7 @@ const TodoForm: React.FC<TodoFormProps> = (props) => {
       <form className={style.todoForm} onSubmit={(e) => atSubmit(e)}>
         <TodoTextField
           id="todo-input"
-          placeholder="代辦事項"
+          placeholder="TODO"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           InputProps={{
@@ -42,7 +42,7 @@ const TodoForm: React.FC<TodoFormProps> = (props) => {
           required
         />
         <TodoButton variant="contained" color="primary" type="submit" endIcon={<SendIcon />}>
-          送出
+          SEND
         </TodoButton>
       </form>
     </>

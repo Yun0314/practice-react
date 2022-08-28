@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from '@todoList/TodoList';
+import SlideShow from '@slideShow/SlideShow';
 import style from '@/styles/app.module.scss';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <header className={style.appHeader}>
         <h2>React Practice</h2>
         <TodoList />
+        <SlideShow />
       </header>
     </div>
   );

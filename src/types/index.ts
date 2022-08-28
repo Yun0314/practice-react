@@ -1,10 +1,8 @@
-export type LoadingType = {
-  isLoading: boolean;
-};
-
-// any 待調整
 export interface RequestConfigType {
   url: string;
   method: string;
-  data?: any;
+  data?: unknown;
 }
+
+// any 待調整
+export type applyDataType = (data: any) => void;

@@ -16,6 +16,7 @@
   max-width: 600px;
   cursor: pointer;
   border: 1px solid $white;
+  list-style: none;
 }
 
 .todoLi {
@@ -26,7 +27,7 @@
 
   &[data-active='true'] {
     text-decoration: line-through;
-    color: #888;
+    color: $gray;
     background-color: $white;
   }
 

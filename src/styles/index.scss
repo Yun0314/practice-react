@@ -10,7 +10,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.loading[data-active='true'] {
+.loading {
   position: absolute;
   display: flex;
   justify-content: center;

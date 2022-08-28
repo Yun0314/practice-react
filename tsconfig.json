@@ -19,7 +19,9 @@
     "paths": {
       // 設定絕對路徑，讓 vscode 辨識，需先設 baseUrl
       "@/*": ["src/*"],
-      "@todoList/*": ["src/components/todoList/*"]
+      "@common/*": ["src/components/common/*"],
+      "@todoList/*": ["src/components/todoList/*"],
+      "@slideShow/*": ["src/components/slideShow/*"]
     }
   },
   "include": ["src"] // 指定編譯需要編譯的文件或目錄

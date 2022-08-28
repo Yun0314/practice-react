@@ -6,10 +6,10 @@ export const UPDATE_TODO = 'UPDATE_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 export const CHANGE_TODO_TAB = 'CHANGE_TODO_TAB';
 
-export function setTodo(item: TodoType[]): TodoActionType {
+export function setTodo(list: TodoType[]): TodoActionType {
   return {
     type: SET_TODO,
-    payload: item
+    payload: list
   };
 }
 

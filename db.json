@@ -30,5 +30,19 @@
       "content": "事項_6",
       "checked": false
     }
+  ],
+  "slideShow": [
+    {
+      "picture": "https://placeimg.com/400/300/nature?t=0",
+      "id": 0
+    },
+    {
+      "picture": "https://placeimg.com/400/300/nature?t=1",
+      "id": 1
+    },
+    {
+      "picture": "https://placeimg.com/400/300/nature?t=2",
+      "id": 2
+    }
   ]
 }

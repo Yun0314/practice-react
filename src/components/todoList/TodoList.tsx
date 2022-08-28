@@ -3,7 +3,7 @@ import TodoServiceConfig from '@/apis/todoService';
 import useAxios from '@/hooks/useAxios';
 import { setTodo, addTodo, updateTodo, deleteTodo, changeTodoTab } from '@/actions/todoAction';
 import useTodoReducer from '@/reducers/todo';
-import Loading from '@/components/common/Loading';
+import Loading from '@common/Loading';
 import TodoTab from '@todoList/TodoTab';
 import TodoForm from '@todoList/TodoForm';
 import TodoItem from '@todoList/TodoItem';
@@ -14,7 +14,7 @@ const TodoList: React.FC = () => {
   const [state, dispatch] = useTodoReducer();
   const { isLoading, sendRequest } = useAxios();
 
-  // 第一次頁面載入呼叫api撈 list
+  // 第一次頁面載入呼叫 api 撈 list
   useEffect(() => {
     sendRequest(TodoServiceConfig.getAll(), (res: TodoType[]) => {
       dispatch(setTodo(res));
@@ -71,27 +71,27 @@ const TodoList: React.FC = () => {
     return true;
   });
 
-  const noData: boolean = isLoading ? true : tabTodoList?.length ? false : true;
-  const noDataText = isLoading ? '讀取中...' : '無資料';
+  const TodoBlock = () => {
+    const noDataText = isLoading ? 'LOADING' : 'NO DATA';
+
+    return tabTodoList?.length ? (
+      <>
+        {tabTodoList.map((item) => (
+          <TodoItem key={item.id} {...item} onCheckItem={atCheckItem} onDeleteItem={atDeleteItem} />
+        ))}
+      </>
+    ) : (
+      <li className={style.todoNoData}>{noDataText}</li>
+    );
+  };
 
   return (
     <>
-      <Loading isLoading={isLoading} />
+      {isLoading && <Loading />}
       <TodoTab tabType={state.tab} onChangeTab={atChangeTab} />
       <TodoForm onAddItem={atAddItem} />
       <ul className={style.todoUl}>
-        {noData ? (
-          <div className={style.todoNoData}>{noDataText}</div>
-        ) : (
-          tabTodoList.map((item) => (
-            <TodoItem
-              key={item.id}
-              {...item}
-              onCheckItem={atCheckItem}
-              onDeleteItem={atDeleteItem}
-            />
-          ))
-        )}
+        <TodoBlock />
       </ul>
     </>
   );

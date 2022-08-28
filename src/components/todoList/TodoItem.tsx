@@ -2,7 +2,7 @@ import React, { memo, MouseEvent } from 'react';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { TodoItemProps } from '@/types/todoList';
-import { TodoCheckbox } from '@/styles/styleTodoList';
+import { TodoCheckbox } from '@/styles/mui/muiTodoList';
 import style from '@/styles/todo-list.module.scss';
 
 const TodoItem: React.FC<TodoItemProps> = (props) => {

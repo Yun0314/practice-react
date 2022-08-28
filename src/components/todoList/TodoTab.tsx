@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import { TodoTabProps, TabListType } from '@/types/todoList';
-import { TodoToggleButtonGroup } from '@/styles/styleTodoList';
+import { TodoToggleButtonGroup } from '@/styles/mui/muiTodoList';
 
 const tabList: TabListType[] = [
-  { title: '全部', type: 'all' },
-  { title: '進行中', type: 'active' },
-  { title: '完成', type: 'completed' }
+  { title: 'All', type: 'all' },
+  { title: 'Todo', type: 'active' },
+  { title: 'Completed', type: 'completed' }
 ];
 
 const TodoTab: React.FC<TodoTabProps> = (props) => {

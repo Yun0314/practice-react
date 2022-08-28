@@ -1,12 +1,12 @@
 # React 小練習
 
-1. todoList (CRUD)
-2. 準備中
+1. todoList + reducer
+2. slideShow + reducer
 3. 準備中
 
 - Create React App + TypeScript
-- UI 框架使用 Material UI、Material ICON
-- 使用 emotion (CSS-in-JS)
+- UI 框架使用 Material UI、Material ICON，並配合使用 emotion (CSS-in-JS)
+- 使用 SCSS
 - 用 JSON Server 模擬 RESTful API (線本地端使用)，搭配 axios 進行呼叫。
   - 操作說明:
   - 執行 json-server --watch db.json
