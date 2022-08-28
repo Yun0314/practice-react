@@ -4,6 +4,9 @@ export interface SlideShowType {
 }
 
 export interface SlideShowPictureType extends SlideShowType {
+  listLength: number;
+  index: number;
+  status: string;
   onRemovePic: (id: number) => void;
 }
 
@@ -22,6 +25,7 @@ export type SlideStateType = {
   data: SlideShowType[];
   length: number;
   currentIndex: number;
+  status: string;
 };
 
 export type SlideActionType =
@@ -30,3 +34,9 @@ export type SlideActionType =
   | { type: 'DELETE_PICTURE'; payload: number }
   | { type: 'PLUS_CURRENT_INDEX' }
   | { type: 'MINUS_CURRENT_INDEX' };
+
+export enum Status {
+  INIT = 'init',
+  ADD = 'add',
+  DELETE = 'delete'
+}

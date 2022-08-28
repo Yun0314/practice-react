@@ -77,8 +77,15 @@ const SlideShow: React.FC<UseAxiosType> = (props) => {
   const PictureBlock = () => {
     return state.length > 0 ? (
       <div className={classnames(style.pictureBlock, movedDistanceStyle)}>
-        {state.data.map((item) => (
-          <SlideShowPicture key={item.id} {...item} onRemovePic={atRemovePic} />
+        {state.data.map((item, index) => (
+          <SlideShowPicture
+            key={item.id}
+            {...item}
+            listLength={state.length}
+            index={index}
+            status={state.status}
+            onRemovePic={atRemovePic}
+          />
         ))}
       </div>
     ) : (
