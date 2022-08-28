@@ -9,11 +9,13 @@ const SlideButton = styled(Button)({
   boxShadow: 'none',
   textTransform: 'none',
   fontSize: 12,
-  marginLeft: '6px',
   padding: '4px 18px',
   border: '1px solid',
   lineHeight: 1.5,
   backgroundColor: `${green}`,
+  '& + .MuiButtonBase-root': {
+    marginLeft: '16px'
+  },
   '&.Mui-disabled': {
     color: 'rgba(0, 0, 0, 0.9)',
     backgroundColor: `${green}`

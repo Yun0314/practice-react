@@ -1,18 +1,17 @@
 import React, { useEffect, useCallback } from 'react';
 import TodoServiceConfig from '@/apis/todoService';
-import useAxios from '@/hooks/useAxios';
 import { setTodo, addTodo, updateTodo, deleteTodo, changeTodoTab } from '@/actions/todoAction';
 import useTodoReducer from '@/reducers/todo';
-import Loading from '@common/Loading';
 import TodoTab from '@todoList/TodoTab';
 import TodoForm from '@todoList/TodoForm';
 import TodoItem from '@todoList/TodoItem';
 import { TodoType } from '@/types/todoList';
+import { UseAxiosType } from '@/types/index';
 import style from '@/styles/todo-list.module.scss';
 
-const TodoList: React.FC = () => {
+const TodoList: React.FC<UseAxiosType> = (props) => {
+  const { isLoading, sendRequest } = props;
   const [state, dispatch] = useTodoReducer();
-  const { isLoading, sendRequest } = useAxios();
 
   // 第一次頁面載入呼叫 api 撈 list
   useEffect(() => {
@@ -86,14 +85,13 @@ const TodoList: React.FC = () => {
   };
 
   return (
-    <>
-      {isLoading && <Loading />}
+    <section>
       <TodoTab tabType={state.tab} onChangeTab={atChangeTab} />
       <TodoForm onAddItem={atAddItem} />
       <ul className={style.todoUl}>
         <TodoBlock />
       </ul>
-    </>
+    </section>
   );
 };
 export default TodoList;

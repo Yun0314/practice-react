@@ -54,11 +54,10 @@ const TodoButton = styled(Button)({
 const TodoToggleButtonGroup = styled(ToggleButtonGroup)({
   justifyContent: 'center',
   fontSize: 16,
-  marginBottom: '18px',
+  marginBottom: '80px',
   '& .MuiToggleButton-root': {
     backgroundColor: `${white}`,
-    maxWidth: '150px',
-    width: '100%',
+    width: '150px',
     '&.Mui-selected': {
       color: `${white}`,
       backgroundColor: `${green}`,

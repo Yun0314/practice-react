@@ -1,0 +1,32 @@
+@import 'variables';
+
+.navList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.navItem {
+  padding: 4px 60px;
+  border-radius: 4px;
+  border: 1px solid $turquoise;
+  font-size: 20px;
+  font-weight: bold;
+  color: $turquoise;
+  text-decoration: none;
+
+  & + .navItem {
+    margin-left: 20px;
+  }
+
+  &:global(.active) {
+    color: $white;
+    background-color: $turquoise;
+  }
+}
+
+.menuHr {
+  margin-bottom: 40px;
+  border-color: #92c4b879;
+}

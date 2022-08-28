@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
-import useAxios from '@/hooks/useAxios';
+import classnames from 'classnames';
+import { css } from '@emotion/css';
 import useSlideReducer from '@/reducers/slide';
 import SlideServiceConfig from '@/apis/slideService';
 import {
@@ -11,14 +12,12 @@ import {
 } from '@/actions/slideAction';
 import SlideShowButton from '@slideShow/SlideShowButton';
 import SlideShowPicture from '@slideShow/SlideShowPicture';
-import Loading from '@common/Loading';
-import classnames from 'classnames';
-import { css } from '@emotion/css';
+import { UseAxiosType } from '@/types/index';
 import style from '@/styles/slide-show.module.scss';
 
-const SlideShow: React.FC = () => {
+const SlideShow: React.FC<UseAxiosType> = (props) => {
+  const { sendRequest } = props;
   const [state, dispatch] = useSlideReducer();
-  const { isLoading, sendRequest } = useAxios();
 
   // 判斷畫面是否可以移動
   const pageIdReference = state.length - state.perPage;
@@ -88,9 +87,7 @@ const SlideShow: React.FC = () => {
   };
 
   return (
-    <>
-      {isLoading && <Loading />}
-
+    <section>
       <div className={classnames(style.pictureList, viewWidth)}>
         <PictureBlock />
       </div>
@@ -107,7 +104,7 @@ const SlideShow: React.FC = () => {
       <p className={style.pictureDesc}>
         {state.currentIndex} / {state.length}
       </p>
-    </>
+    </section>
   );
 };
 export default SlideShow;

@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 import { RequestConfigType, applyDataType } from '@/types/index';
 
 const useAxios = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const sendRequest = useCallback(
     async (requestConfig: RequestConfigType, applyData: applyDataType) => {
