@@ -6,28 +6,27 @@ type TodoCreateType = {
   checked: boolean;
 };
 
-class TodoServiceConfig {
-  getAll = () => ({
-    url: '/todoList',
-    method: 'GET'
-  });
+const url = '/todoList';
 
-  create = (data: TodoCreateType) => ({
-    url: '/todoList',
+const TodoServiceConfig = {
+  getAll: () => ({
+    url,
+    method: 'GET'
+  }),
+  create: (data: TodoCreateType) => ({
+    url,
     method: 'POST',
     data
-  });
-
-  update = (data: TodoType) => ({
-    url: `/todoList/${data.id}`,
+  }),
+  update: (data: TodoType) => ({
+    url: `${url}/${data.id}`,
     method: 'PUT',
     data
-  });
-
-  delete = (id: number) => ({
-    url: `/todoList/${id}`,
+  }),
+  delete: (id: number) => ({
+    url: `${url}/${id}`,
     method: 'DELETE'
-  });
-}
+  })
+};
 
-export default new TodoServiceConfig();
+export default TodoServiceConfig;
