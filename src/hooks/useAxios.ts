@@ -17,7 +17,6 @@ const useAxios = () => {
       try {
         res = await axios({ url, method, data });
       } catch (err) {
-        console.log((err as Error).name);
         throw new Error((err as Error).name);
       } finally {
         if (res) applyData(res.data);

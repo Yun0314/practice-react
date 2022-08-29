@@ -18,7 +18,9 @@ const TodoList = () => {
   useEffect(() => {
     sendRequest(TodoServiceConfig.getAll(), (res: TodoType[]) => {
       dispatch(setTodo(res));
-    }).catch(() => setNoDataText('NO DATA'));
+    }).finally(() => {
+      setNoDataText('NO DATA');
+    });
   }, [sendRequest, dispatch]);
 
   // 使用 useCallback 避免重新渲染時 function 跟著重創一個實體而連帶子層跟著 reRender
