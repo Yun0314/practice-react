@@ -1,3 +1,9 @@
+import { SlideStateType } from '@/types/slideShow'
+
+export type RootState = {
+  slide: SlideStateType
+}
+
 export type RequestConfigType = {
   url: string;
   method: string;

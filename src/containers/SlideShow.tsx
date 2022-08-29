@@ -1,7 +1,8 @@
 import React, { useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { css } from '@emotion/css';
-import useSlideReducer from '@/reducers/slide';
+// import useSlideReducer from '@/reducers/slide';
 import SlideServiceConfig from '@/apis/slideService';
 import {
   setSlide,
@@ -12,19 +13,21 @@ import {
 } from '@/actions/slideAction';
 import SlideShowButton from '@slideShow/SlideShowButton';
 import SlideShowPicture from '@slideShow/SlideShowPicture';
-import { UseAxiosType } from '@/types/index';
+import { RootState, UseAxiosType } from '@/types/index';
 import style from '@/styles/slide-show.module.scss';
 
 const SlideShow: React.FC<UseAxiosType> = (props) => {
   const { sendRequest } = props;
-  const [state, dispatch] = useSlideReducer();
+
+  const slide = useSelector((state: RootState) => state.slide);
+  const dispatch = useDispatch();
 
   // 判斷畫面是否可以移動
-  const pageIdReference = state.length - state.perPage;
+  const pageIdReference = slide.length - slide.perPage;
 
   // 按鈕禁止狀態
-  const prevButtonDisable = !state.currentIndex;
-  const nextButtonDisable = state.length <= state.perPage || state.currentIndex >= pageIdReference;
+  const prevButtonDisable = !slide.currentIndex;
+  const nextButtonDisable = slide.length <= slide.perPage || slide.currentIndex >= pageIdReference;
 
   // 第一次頁面載入呼叫 api 撈 list
   useEffect(() => {
@@ -66,24 +69,24 @@ const SlideShow: React.FC<UseAxiosType> = (props) => {
   // 幻燈片長度`
   // 8是 css 中 picture 的 padding
   const viewWidth = css`
-    width: ${(state.imageWidth + 8) * state.perPage}px;
+    width: ${(slide.imageWidth + 8) * slide.perPage}px;
   `;
   // 移動可視圖範圍
   // 8是 css 中 picture 的 padding
   const movedDistanceStyle = css`
-    transform: translateX(${state.currentIndex * -1 * (state.imageWidth + 8)}px);
+    transform: translateX(${slide.currentIndex * -1 * (slide.imageWidth + 8)}px);
   `;
 
   const PictureBlock = () => {
-    return state.length > 0 ? (
+    return slide.length > 0 ? (
       <div className={classnames(style.pictureBlock, movedDistanceStyle)}>
-        {state.data.map((item, index) => (
+        {slide.data.map((item, index) => (
           <SlideShowPicture
             key={item.id}
             {...item}
-            listLength={state.length}
+            listLength={slide.length}
             index={index}
-            status={state.status}
+            status={slide.status}
             onRemovePic={atRemovePic}
           />
         ))}
@@ -100,7 +103,7 @@ const SlideShow: React.FC<UseAxiosType> = (props) => {
       </div>
 
       <SlideShowButton
-        imageWidth={state.imageWidth}
+        imageWidth={slide.imageWidth}
         prevButtonDisable={prevButtonDisable}
         nextButtonDisable={nextButtonDisable}
         onMinusCurrentIndex={atMinusCurrentIndex}
@@ -109,7 +112,7 @@ const SlideShow: React.FC<UseAxiosType> = (props) => {
       />
 
       <p className={style.pictureDesc}>
-        {state.currentIndex} / {state.length}
+        {slide.currentIndex} / {slide.length}
       </p>
     </section>
   );

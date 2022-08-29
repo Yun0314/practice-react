@@ -1,4 +1,3 @@
-import React, { useReducer } from 'react';
 import {
   SET_PICTURE,
   ADD_PICTURE,
@@ -19,7 +18,7 @@ const initialState = {
 };
 
 let newList: SlideShowType[];
-const reducer = (state: SlideStateType, action: SlideActionType): SlideStateType => {
+const reducer = (state: SlideStateType = initialState, action: SlideActionType): SlideStateType => {
   switch (action.type) {
     case SET_PICTURE:
       return {
@@ -42,20 +41,20 @@ const reducer = (state: SlideStateType, action: SlideActionType): SlideStateType
         ...state,
         data: newList,
         length: newList.length,
-        currentIndex: state.currentIndex === 0 ? 0 : state.currentIndex--,
+        currentIndex: state.currentIndex === 0 ? 0 : state.currentIndex - 1,
         status: SlideStatus.DELETE
       };
     case PLUS_CURRENT_INDEX:
       return {
         ...state,
-        currentIndex: state.currentIndex++,
+        currentIndex: state.currentIndex + 1,
         status: SlideStatus.INIT
       };
 
     case MINUS_CURRENT_INDEX:
       return {
         ...state,
-        currentIndex: state.currentIndex--,
+        currentIndex: state.currentIndex - 1,
         status: SlideStatus.INIT
       };
     default:
@@ -63,7 +62,4 @@ const reducer = (state: SlideStateType, action: SlideActionType): SlideStateType
   }
 };
 
-export default function useSlideReducer(): [SlideStateType, React.Dispatch<SlideActionType>] {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  return [state, dispatch];
-}
+export default reducer

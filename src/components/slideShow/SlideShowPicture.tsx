@@ -12,13 +12,13 @@ const SlideShowPicture: React.FC<SlideShowPictureType> = (props) => {
     // 先執行移除的動畫
     setLeave(true);
     // 直接執行會閃爍
-    setTimeout(() => onRemovePic(id), 300);
+    setTimeout(() => onRemovePic(id), 200);
   };
 
   // 利用 useEffect 和 useLayoutEffect 執行流程的不同，實現新增時的動畫效果
   useEffect(() => {
     // 直接執行會閃爍
-    setTimeout(() => setEnter(false), 300);
+    setTimeout(() => setEnter(false), 200);
   }, []);
 
   useLayoutEffect(() => {
