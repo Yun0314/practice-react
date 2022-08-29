@@ -18,7 +18,7 @@ const SlideShowPicture: React.FC<SlideShowPictureType> = (props) => {
   // 利用 useEffect 和 useLayoutEffect 執行流程的不同，實現新增時的動畫效果
   useEffect(() => {
     // 直接執行會閃爍
-    setTimeout(() => setEnter(false), 200);
+    setTimeout(() => setEnter(false), 100);
   }, []);
 
   useLayoutEffect(() => {
@@ -28,7 +28,7 @@ const SlideShowPicture: React.FC<SlideShowPictureType> = (props) => {
 
   return (
     <section className={style.picture} data-enter={enter} data-leave={leave}>
-      <img src={picture} alt={`picture${id}`} />
+      <img src={picture} alt={`picture${id}`} loading="lazy" />
       <span className={style.pictureRemover} onClick={() => onDeleteClick(id)}>
         &times;
       </span>

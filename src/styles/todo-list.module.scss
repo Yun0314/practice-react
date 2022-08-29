@@ -30,14 +30,14 @@
     color: $gray;
     background-color: $white;
   }
-
-  .todoCheckedBlock {
-    display: flex;
-    align-items: center;
-  }
 }
 
 .todoNoData {
   border: 1px solid $darkGray;
   color: $darkGray;
+}
+
+.todoCheckedBlock {
+  display: flex;
+  align-items: center;
 }

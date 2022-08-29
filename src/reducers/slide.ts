@@ -32,7 +32,7 @@ const reducer = (state: SlideStateType = initialState, action: SlideActionType):
         ...state,
         data: newList,
         length: newList.length,
-        currentIndex: newList.length - state.perPage,
+        currentIndex: Math.max(newList.length - state.perPage, 0),
         status: SlideStatus.ADD
       };
     case DELETE_PICTURE:
@@ -62,4 +62,4 @@ const reducer = (state: SlideStateType = initialState, action: SlideActionType):
   }
 };
 
-export default reducer
+export default reducer;

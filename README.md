@@ -15,6 +15,6 @@
 
 - Create React App + TypeScript
 - Functional Component、React Hooks、React Redux
-- Material UI、Material ICON，並配合 emotion (CSS-in-JS)
+- Material UI、Material ICON，並配合 emotion (CSS-in-JS)。
 - SCSS
 - JSON Server 模擬 RESTful API (限本地端使用)，搭配 axios 呼叫 api。

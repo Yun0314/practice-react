@@ -1,8 +1,11 @@
-import React from 'react';
-import '@/styles/index.scss';
+import React, { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/types/common';
 
 const Loading = () => {
-  return <div className="loading"></div>;
+  const loading = useSelector((state: RootState) => state.common.loading);
+
+  return <div className="loading" data-active={loading} />;
 };
 
-export default Loading;
+export default memo(Loading);

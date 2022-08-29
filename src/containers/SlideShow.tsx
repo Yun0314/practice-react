@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import { css } from '@emotion/css';
-// import useSlideReducer from '@/reducers/slide';
+import useAxios from '@/hooks/useAxios';
 import SlideServiceConfig from '@/apis/slideService';
 import {
   setSlide,
@@ -13,11 +13,12 @@ import {
 } from '@/actions/slideAction';
 import SlideShowButton from '@slideShow/SlideShowButton';
 import SlideShowPicture from '@slideShow/SlideShowPicture';
-import { RootState, UseAxiosType } from '@/types/index';
+import { RootState } from '@/types/common';
+import { SlideShowPictureType } from '@/types/slideShow';
 import style from '@/styles/slide-show.module.scss';
 
-const SlideShow: React.FC<UseAxiosType> = (props) => {
-  const { sendRequest } = props;
+const SlideShow = () => {
+  const { sendRequest } = useAxios();
 
   const slide = useSelector((state: RootState) => state.slide);
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const SlideShow: React.FC<UseAxiosType> = (props) => {
 
   // 第一次頁面載入呼叫 api 撈 list
   useEffect(() => {
-    sendRequest(SlideServiceConfig.get(), (res) => {
+    sendRequest(SlideServiceConfig.get(), (res: SlideShowPictureType[]) => {
       dispatch(setSlide(res));
     });
   }, [sendRequest, dispatch]);
@@ -39,7 +40,7 @@ const SlideShow: React.FC<UseAxiosType> = (props) => {
   // 新增圖片
   const atAddPicture = useCallback(
     (picture: string) => {
-      sendRequest(SlideServiceConfig.create(picture), (res) => {
+      sendRequest(SlideServiceConfig.create(picture), (res: SlideShowPictureType) => {
         dispatch(addSlide(res));
       });
     },

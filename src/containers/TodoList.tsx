@@ -1,4 +1,5 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import useAxios from '@/hooks/useAxios';
 import TodoServiceConfig from '@/apis/todoService';
 import { setTodo, addTodo, updateTodo, deleteTodo, changeTodoTab } from '@/actions/todoAction';
 import useTodoReducer from '@/reducers/todo';
@@ -6,18 +7,18 @@ import TodoTab from '@todoList/TodoTab';
 import TodoForm from '@todoList/TodoForm';
 import TodoItem from '@todoList/TodoItem';
 import { TodoType } from '@/types/todoList';
-import { UseAxiosType } from '@/types/index';
 import style from '@/styles/todo-list.module.scss';
 
-const TodoList: React.FC<UseAxiosType> = (props) => {
-  const { isLoading, sendRequest } = props;
+const TodoList = () => {
+  const { sendRequest } = useAxios();
   const [state, dispatch] = useTodoReducer();
+  const [noDataText, setNoDataText] = useState<string>('LOADING');
 
   // 第一次頁面載入呼叫 api 撈 list
   useEffect(() => {
     sendRequest(TodoServiceConfig.getAll(), (res: TodoType[]) => {
       dispatch(setTodo(res));
-    });
+    }).catch(() => setNoDataText('NO DATA'));
   }, [sendRequest, dispatch]);
 
   // 使用 useCallback 避免重新渲染時 function 跟著重創一個實體而連帶子層跟著 reRender
@@ -71,8 +72,6 @@ const TodoList: React.FC<UseAxiosType> = (props) => {
   });
 
   const TodoBlock = () => {
-    const noDataText = isLoading ? 'LOADING' : 'NO DATA';
-
     return tabTodoList?.length ? (
       <>
         {tabTodoList.map((item) => (

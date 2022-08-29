@@ -1,31 +1,33 @@
+import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from '@/apis/axios';
-import { useState, useCallback } from 'react';
-import { RequestConfigType, applyDataType } from '@/types/index';
+import { toggleLoading } from '@/actions/commonAction';
+import { RequestConfigType, applyDataType } from '@/types/common';
 
 const useAxios = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const sendRequest = useCallback(
     async (requestConfig: RequestConfigType, applyData: applyDataType) => {
       const { url, method = 'GET', data = null } = requestConfig;
 
-      method === 'GET' && setIsLoading(true);
+      if (method === 'GET') dispatch(toggleLoading(true));
 
       let res;
       try {
         res = await axios({ url, method, data });
       } catch (err) {
         console.log((err as Error).name);
+        throw new Error((err as Error).name);
       } finally {
         if (res) applyData(res.data);
-        setTimeout(() => setIsLoading(false), 500);
+        setTimeout(() => dispatch(toggleLoading(false)), 500);
       }
     },
-    []
+    [dispatch]
   );
 
   return {
-    isLoading,
     sendRequest
   };
 };

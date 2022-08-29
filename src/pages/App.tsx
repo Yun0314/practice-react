@@ -6,14 +6,11 @@ import TodoList from '@/containers/TodoList';
 import SlideShow from '@/containers/SlideShow';
 import Loading from '@common/Loading';
 import style from '@/styles/app.module.scss';
-import useAxios from '@/hooks/useAxios';
 
 const App = () => {
-  const { isLoading, sendRequest } = useAxios();
-
   return (
     <Router>
-      {isLoading && <Loading />}
+      <Loading />
       <div className="app">
         <div className={style.appDiv}>
           <header className={style.appHeader}>
@@ -21,14 +18,8 @@ const App = () => {
             <Menu />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route
-                path="/todoList"
-                element={<TodoList isLoading={isLoading} sendRequest={sendRequest} />}
-              />
-              <Route
-                path="/slideShow"
-                element={<SlideShow isLoading={isLoading} sendRequest={sendRequest} />}
-              />
+              <Route path="/todoList" element={<TodoList />} />
+              <Route path="/slideShow" element={<SlideShow />} />
             </Routes>
           </header>
         </div>
