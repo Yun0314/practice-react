@@ -6,7 +6,8 @@ import {
   PLUS_CURRENT_INDEX,
   MINUS_CURRENT_INDEX
 } from '@/actions/slideAction';
-import { SlideShowType, SlideStateType, SlideActionType, Status } from '@/types/slideShow';
+import { SlideShowType, SlideStateType, SlideActionType } from '@/types/slideShow';
+import { SlideStatus } from '@/store/const';
 
 const initialState = {
   perPage: 3, // 固定值
@@ -14,7 +15,7 @@ const initialState = {
   data: [],
   length: 0,
   currentIndex: 0,
-  status: Status.INIT
+  status: SlideStatus.INIT
 };
 
 let newList: SlideShowType[];
@@ -33,7 +34,7 @@ const reducer = (state: SlideStateType, action: SlideActionType): SlideStateType
         data: newList,
         length: newList.length,
         currentIndex: newList.length - state.perPage,
-        status: Status.ADD
+        status: SlideStatus.ADD
       };
     case DELETE_PICTURE:
       newList = state.data.filter((item) => item.id !== action.payload);
@@ -42,20 +43,20 @@ const reducer = (state: SlideStateType, action: SlideActionType): SlideStateType
         data: newList,
         length: newList.length,
         currentIndex: state.currentIndex === 0 ? 0 : state.currentIndex--,
-        status: Status.DELETE
+        status: SlideStatus.DELETE
       };
     case PLUS_CURRENT_INDEX:
       return {
         ...state,
         currentIndex: state.currentIndex++,
-        status: Status.INIT
+        status: SlideStatus.INIT
       };
 
     case MINUS_CURRENT_INDEX:
       return {
         ...state,
         currentIndex: state.currentIndex--,
-        status: Status.INIT
+        status: SlideStatus.INIT
       };
     default:
       return state;

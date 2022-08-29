@@ -1,5 +1,6 @@
 import React, { memo, useState, useEffect, useLayoutEffect } from 'react';
-import { SlideShowPictureType, Status } from '@/types/slideShow';
+import { SlideShowPictureType } from '@/types/slideShow';
+import { SlideStatus } from '@/store/const';
 import style from '@/styles/slide-show.module.scss';
 
 const SlideShowPicture: React.FC<SlideShowPictureType> = (props) => {
@@ -22,7 +23,7 @@ const SlideShowPicture: React.FC<SlideShowPictureType> = (props) => {
 
   useLayoutEffect(() => {
     // 判斷: 新增情境 + 該圖片為最後一張
-    setEnter(status === Status.ADD && listLength - 1 === index);
+    setEnter(status === SlideStatus.ADD && listLength - 1 === index);
   }, [listLength, status, index]);
 
   return (

@@ -34,9 +34,3 @@ export type SlideActionType =
   | { type: 'DELETE_PICTURE'; payload: number }
   | { type: 'PLUS_CURRENT_INDEX' }
   | { type: 'MINUS_CURRENT_INDEX' };
-
-export enum Status {
-  INIT = 'init',
-  ADD = 'add',
-  DELETE = 'delete'
-}

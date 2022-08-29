@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
+import React from 'react';
 import '@/styles/index.scss';
 
-const Loading: React.FC = () => {
+const Loading = () => {
   return <div className="loading"></div>;
 };
 
-export default memo(Loading);
+export default Loading;
